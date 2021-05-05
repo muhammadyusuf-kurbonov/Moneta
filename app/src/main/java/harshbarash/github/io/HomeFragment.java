@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
     ImageButton define;
+    ImageButton collection;
+
 
 
     @Nullable
@@ -21,7 +23,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+
         define = v.findViewById(R.id.define);
+        collection = v.findViewById(R.id.collection);
+
         define.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +35,30 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+        collection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startActivity(new Intent(getActivity(), Collection.class));
+            }
+        });
         return v;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

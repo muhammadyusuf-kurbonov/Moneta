@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,7 +37,7 @@ public class Define extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.define);
+        setContentView(R.layout.define_layout);
 
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setTitle("Данные добавлены");
@@ -78,7 +76,7 @@ public class Define extends AppCompatActivity {
 
         Map<String, Object> doc= new HashMap<>();
         doc.put("id", id);
-        doc.put("title", nominal_value);
+        doc.put("Номинал", nominal_value);
 
         //добавление данных
         db.collection("Documents").document(id).set(doc)
