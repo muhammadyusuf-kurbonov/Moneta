@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <AutoCompleteTextView
+        android:id="@+id/value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:hint="Выберите номинал монеты"
+        android:background="@drawable/textview_border"
+        android:inputType="number"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="-12dp"
+        tools:layout_editor_absoluteY="137dp"
+        android:completionThreshold="1"
+        tools:ignore="MissingConstraints">
+    </AutoCompleteTextView>
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Добавить" />
+
+
+</LinearLayout>

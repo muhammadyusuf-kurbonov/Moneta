@@ -10,4 +10,12 @@
     <string name="define_button">define button</string>
     <string name="collection_button">collection button</string>
 
+
+    <string-array name="coins">
+        <item>1 Рубль</item>
+        <item>2 Рубля</item>
+        <item>5 Рублей</item>
+        <item>10 Рублей </item>
+    </string-array>
+
 </resources>
