@@ -6,10 +6,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +27,8 @@ import java.util.UUID;
 
 public class Define extends AppCompatActivity {
 
+
+
     //  Если не удобно создавать через ресурсы
 //    private static final String[] VALUES = new String[]{
 //            "1 Рубль", "2 рубля", "5 рублей", "10 рублей"};
@@ -29,6 +36,8 @@ public class Define extends AppCompatActivity {
 
     AutoCompleteTextView value;
     Button addBtn;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
 
     ProgressDialog pd;
 
@@ -81,15 +90,15 @@ public class Define extends AppCompatActivity {
         //добавление данных
         db.collection("Documents").document(id).set(doc)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                //успешно добавлен - приход сюда
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        //успешно добавлен - приход сюда
 
-                pd.dismiss();
-                Toast.makeText(Define.this, "Обновленно", Toast.LENGTH_SHORT).show();
+                        pd.dismiss();
+                        Toast.makeText(Define.this, "Обновленно", Toast.LENGTH_SHORT).show();
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 //если неудачно, то сюда
@@ -97,5 +106,12 @@ public class Define extends AppCompatActivity {
                 Toast.makeText(Define.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void checkButton(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+
+        radioButton = findViewById(radioId);
+
     }
 }

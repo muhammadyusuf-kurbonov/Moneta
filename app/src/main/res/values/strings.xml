@@ -9,6 +9,23 @@
     <string name="search_button">search button</string>
     <string name="define_button">define button</string>
     <string name="collection_button">collection button</string>
+    <string name="ml">*ML еще не совершенен, рекомендуем сверять данные</string>
+    <string name="Rubel_5">5 рублей</string>
+    <string name="remove">Убрать</string>
+    <string name="save">Сохранить</string>
+    <string name="add">добавить</string>
+    <string name="nominal">Номинал</string>
+    <string name="R5">5 рублей</string>
+    <string name="condition">Состояние</string>
+    <string name="stamp">Штемпль</string>
+    <string name="kant">Кант:</string>
+    <string name="gurt">Гурт:</string>
+    <string name="magnet">Магнитная:</string>
+    <string name="price">Примерная цена:</string>
+    <string name="year">Год:</string>
+    <string name="pricex2">Ваша цена:</string>
+    <string name="yearhint">2021</string>
+    <string name="smooth">гладкий</string>
 
 
     <string-array name="coins">

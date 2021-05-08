@@ -1,6 +1,5 @@
 package harshbarash.github.io;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
@@ -19,20 +19,18 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
     ListActivity listActivity;
     List<Collection> collectionList;
 
+
     public CustomAdapter(ListActivity listActivity, List<Collection> collectionList) {
         this.listActivity = listActivity;
         this.collectionList = collectionList;
-
-    }
-
-    public CustomAdapter(harshbarash.github.io.ListActivity listActivity, List<Collection> collectionList) {
     }
 
     @NonNull
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.collection_layout, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.collection_layout, viewGroup, false);
 
         ViewHolder viewHolder = new ViewHolder(itemView);
 
@@ -43,6 +41,8 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
 //                показ данных в тосте при клике
                 String title = collectionList.get(position).getNominal_value();
                 // description todo
+
+
                 Toast.makeText(listActivity, title+"\n"
                                 /// todo description
                         , Toast.LENGTH_SHORT).show();

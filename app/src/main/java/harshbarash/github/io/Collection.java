@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Collection extends AppCompatActivity {
 
-    String id, nominal_value;
+    String id, nominal_value; //description TODO
+
 
     public Collection(String id, String nominal_value) {
         this.id = id;

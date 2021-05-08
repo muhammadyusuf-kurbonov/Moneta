@@ -1,31 +1,407 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/MoneyGreen"
+    tools:context=".Define">
 
-    <AutoCompleteTextView
-        android:id="@+id/value"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:hint="Выберите номинал монеты"
-        android:background="@drawable/textview_border"
-        android:inputType="number"
-        android:padding="10dp"
-        tools:layout_editor_absoluteX="-12dp"
-        tools:layout_editor_absoluteY="137dp"
-        android:completionThreshold="1"
-        tools:ignore="MissingConstraints">
-    </AutoCompleteTextView>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/addBtn"
-        android:layout_width="358dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Добавить" />
+        <ImageButton
+            android:id="@+id/slide_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/define"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
 
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="804dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="105dp"
+            tools:layout_editor_absoluteY="0dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="552dp"
+                android:layout_marginTop="250dp"
+                android:layout_marginBottom="55dp"
+                android:background="@drawable/bottom_sheet"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="517dp"
+                    android:gravity="center"
+                    android:text="@string/ml"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginEnd="247dp"
+                    android:layout_marginBottom="463dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/nominal"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/value"
+                    android:layout_width="155dp"
+                    android:layout_height="39dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="98dp"
+                    android:layout_marginEnd="239dp"
+                    android:layout_marginBottom="415dp"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:hint="@string/R5"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/kant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="63dp"
+                    android:layout_marginTop="267dp"
+                    android:layout_marginEnd="233dp"
+                    android:layout_marginBottom="253dp"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:hint="0.4ММ"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/gurt"
+                    android:layout_width="73dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="61dp"
+                    android:layout_marginTop="316dp"
+                    android:layout_marginEnd="228dp"
+                    android:layout_marginBottom="204dp"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:hint="@string/smooth"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="163dp"
+                    android:layout_height="31dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="189dp"
+                    android:layout_marginTop="57dp"
+                    android:layout_marginEnd="59dp"
+                    android:layout_marginBottom="464dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/condition"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="195dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="415dp"
+                    android:background="@drawable/textview_border"
+                    android:indeterminate="false"
+                    android:max="5"
+                    android:progress="4"
+                    android:progressTint="#58814A"
+                    android:thumb="@drawable/elipse"
+                    app:thumbColor="#848484" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="167dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="157dp"
+                    android:layout_marginEnd="227dp"
+                    android:layout_marginBottom="371dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/magnet"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="166dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="190dp"
+                    android:layout_marginTop="151dp"
+                    android:layout_marginEnd="55dp"
+                    android:layout_marginBottom="367dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/stamp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="58dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="268dp"
+                    android:layout_marginEnd="293dp"
+                    android:layout_marginBottom="256dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/kant"
+                    android:textColor="@color/black"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="57dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="312dp"
+                    android:layout_marginEnd="295dp"
+                    android:layout_marginBottom="206dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/gurt"
+                    android:textColor="@color/black"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="96dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="358dp"
+                    android:layout_marginEnd="288dp"
+                    android:layout_marginBottom="160dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/year"
+                    android:textColor="@color/black"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="156dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="194dp"
+                    android:layout_marginTop="272dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="255dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/price"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="147dp"
+                    android:layout_height="33dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="194dp"
+                    android:layout_marginTop="359dp"
+                    android:layout_marginEnd="71dp"
+                    android:layout_marginBottom="156dp"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/pricex2"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pricex2"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="194dp"
+                    android:layout_marginTop="395dp"
+                    android:layout_marginEnd="49dp"
+                    android:layout_marginBottom="117dp"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="196dp"
+                    android:layout_marginTop="317dp"
+                    android:layout_marginEnd="37dp"
+                    android:layout_marginBottom="206dp"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/year"
+                    android:layout_width="154dp"
+                    android:layout_height="41dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="392dp"
+                    android:layout_marginEnd="232dp"
+                    android:layout_marginBottom="119dp"
+                    android:background="@drawable/textview_border"
+                    android:gravity="center"
+                    android:hint="@string/yearhint"
+                    android:inputType="number" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/addBtn"
+                    android:layout_width="233dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="91dp"
+                    android:layout_marginBottom="33dp"
+                    android:background="@drawable/addbtn"
+                    android:fontFamily="@font/playfair_display"
+                    android:text="@string/add"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchcompact"
+                    android:layout_width="71dp"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/addBtn"
+                    android:layout_alignTop="@+id/textView"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="41dp"
+                    android:layout_marginEnd="255dp"
+                    android:layout_marginBottom="228dp"
+                    android:background="@drawable/textview_border"
+                    android:thumb="@drawable/thumb"
+                    app:track="@drawable/track" />
+
+                <RadioGroup
+                    android:id="@+id/radio"
+                    android:layout_width="150dp"
+                    android:layout_height="54dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="187dp"
+                    android:layout_marginTop="195dp"
+                    android:layout_marginEnd="23dp"
+                    android:layout_marginBottom="303dp"
+                    android:background="@drawable/textview_border">
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:buttonTint="#919791"
+                        android:checked="false"
+                        android:onClick="checkButton"
+                        android:text="Шт.М(А)">
+                    </RadioButton>
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:onClick="checkButton"
+                        android:text="Шт.СП">
+                    </RadioButton>
+
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,7 @@ public class ListActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-    FloatingActionButton mAddBtn;
+    ImageButton mAddBtn;
 
     FirebaseFirestore db;
 
@@ -52,11 +53,12 @@ public class ListActivity extends AppCompatActivity {
         mAddBtn = findViewById(R.id.addBtn);
 
 
-
         //       свойства просмотра recycler view
         mRecyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
+
+        pd = new ProgressDialog(this);
 
         showData();
 
@@ -64,6 +66,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ListActivity.this, Define.class));
+                finish();
             }
         });
 
@@ -74,8 +77,8 @@ public class ListActivity extends AppCompatActivity {
     private void showData() {
 
 
-//        pd.setTitle("Loading Data...");
-//        pd.show();
+        pd.setTitle("Loading Data...");
+        pd.show();
 
         db.collection("Documents").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -89,8 +92,12 @@ public class ListActivity extends AppCompatActivity {
 //                    doc.getString() #todo description
                     collectionList.add(collection);
                 }
+//               TODO переписать участок кода (чтобы создание не было привязано к готовому листу)
+//               CustomAdapter adapter = nre CustomAdapter()  recyclerView.setAdapter(adapter) см. Intellij
+
                 adapter = new CustomAdapter(ListActivity.this, collectionList);
                 mRecyclerView.setAdapter(adapter);
+
 
             }
         }).addOnFailureListener(new OnFailureListener() {

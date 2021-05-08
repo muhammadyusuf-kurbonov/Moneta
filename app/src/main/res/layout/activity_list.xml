@@ -5,21 +5,32 @@
     android:layout_height="match_parent"
     tools:context=".Collection">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/addBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/plusbtn"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_margin="5dp">-->
+<!--    </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
 
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:background="@drawable/plusbtn"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true">
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp">
+    </ImageButton>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

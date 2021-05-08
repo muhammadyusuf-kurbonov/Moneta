@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView nominal_value;
+    TextView nominal_value; //todo description из лайаута
     View cView;
 
     public ViewHolder(@NonNull @NotNull View itemView) {

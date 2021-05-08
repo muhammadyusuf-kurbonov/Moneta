@@ -39,26 +39,9 @@ public class HomeFragment extends Fragment {
         collection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(getActivity(), Collection.class));
+               startActivity(new Intent(getActivity(), ListActivity.class));
             }
         });
         return v;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
