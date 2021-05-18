@@ -1,5 +1,6 @@
 package harshbarash.github.io;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,13 +29,13 @@ public class HomeFragment extends Fragment {
         define = v.findViewById(R.id.define);
         collection = v.findViewById(R.id.collection);
 
-        define.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), Define.class));
-
-            }
-        });
+//        define.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), Define.class));
+//
+//            }
+//        });
 
         collection.setOnClickListener(new View.OnClickListener() {
             @Override
