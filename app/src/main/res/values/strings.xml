@@ -52,10 +52,13 @@
     </string-array>
 
     <string name="device">Device:</string>
+    <string name="warnlogin">*Пожалуйста будьте терпеливы, намите и ожидайте входа. Запрос обрабатывается на удаленном сервере.</string>
     <string-array name="devices">
         <item>CPU</item>
         <item>GPU</item>
         <item>NNAPI</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

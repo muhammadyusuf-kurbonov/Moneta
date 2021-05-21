@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    создаем иконки и описание для навигационной панели-->
+    <!--    создаем иконки и описание для навигационной панели-->
     <item
         android:id="@+id/nav_account"
         android:icon="@drawable/user"
