@@ -18,9 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import harshbarash.github.io.Model.Users;
-import harshbarash.github.io.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -42,6 +38,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import harshbarash.github.io.Model.Users;
+import harshbarash.github.io.R;
 
 import static android.app.Activity.RESULT_OK;
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
@@ -113,13 +111,6 @@ public class ProfileFragment extends Fragment {
                 changeImage();
             }
         });
-
-
-
-
-
-
-
         return view;
     }
 
@@ -174,15 +165,10 @@ public class ProfileFragment extends Fragment {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         startActivityForResult(intent, CAMERA_CODE);
-
-
-
     }
 
 
-
     private void Permissions() {
-
 
         Dexter.withContext(getContext())
                 .withPermissions(
@@ -196,12 +182,7 @@ public class ProfileFragment extends Fragment {
             public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
 
             }
-
-        }).check();
-
-
-
-    }
+                }).check(); }
 
 
     @Override
@@ -216,33 +197,22 @@ public class ProfileFragment extends Fragment {
             String filepath = "Photos/" + "userprofile_" + user.getUid();
 
             StorageReference reference = FirebaseStorage.getInstance().getReference(filepath);
-            reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            reference.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
 
-                    Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
 
-                    task.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+                task.addOnSuccessListener(uri -> {
 
-                            String imageURL = uri.toString();
+                    String imageURL = uri.toString();
 
-                            DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
 
-                            HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("imageURL", imageURL);
-                            reference1.updateChildren(hashMap);
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("imageURL", imageURL);
+                    reference1.updateChildren(hashMap);
 
-
-                        }
-                    });
-
-
-                }
+                });
             });
-
-
         }
 
 
@@ -254,30 +224,24 @@ public class ProfileFragment extends Fragment {
             String filepath = "Photos/" + "userprofile_" + user.getUid();
 
             StorageReference reference = FirebaseStorage.getInstance().getReference(filepath);
-            reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            reference.putFile(uri).addOnSuccessListener(taskSnapshot -> {
 
-                    Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
 
-                    task.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+                task.addOnSuccessListener(uri1 -> {
 
-                            String imageURL = uri.toString();
+                    String imageURL = uri1.toString();
 
-                            DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
 
-                            HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("imageURL", imageURL);
-                            reference1.updateChildren(hashMap);
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("imageURL", imageURL);
+                    reference1.updateChildren(hashMap);
 
 
-                        }
-                    });
+                });
 
 
-                }
             });
 
 

@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/MoneyGreen"
-            android:theme="@style/AppTheming"
-            app:popupTheme="@style/AppTheming">
+            android:theme="@style/AppTheming">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image_toolbar_message"

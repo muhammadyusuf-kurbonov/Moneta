@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+
 import harshbarash.github.io.Fragments.ChatsFragment;
 import harshbarash.github.io.Fragments.ProfileFragment;
 import harshbarash.github.io.Fragments.UsersFragment;
@@ -32,9 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import harshbarash.github.io.Fragments.ChatsFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     Toolbar toolbar;
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_chat);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -59,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbarchat);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         TabLayout tabLayout = findViewById(R.id.tablayout);
@@ -89,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
                 if (users.getImageURL().equals("default")) {
 
-                    imageView.setImageResource(R.drawable.user);
                 } else {
 
                     Glide.with(getApplicationContext()).load(users.getImageURL()).into(imageView);

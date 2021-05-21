@@ -46,6 +46,8 @@ public class ChatsFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.chat_recyclerview_chatfrag);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mAdapter = new UserAdapter(getContext(), new ArrayList<>(), true);
+        recyclerView.setAdapter(mAdapter);
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -63,24 +65,15 @@ public class ChatsFragment extends Fragment {
                     Chatslist chatslist = ds.getValue(Chatslist.class);
 
                     userlist.add(chatslist);
-
-
-
                 }
 
                 ChatsListings();
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
-
-
         return view;
     }
 
@@ -103,37 +96,20 @@ public class ChatsFragment extends Fragment {
 
                     for (Chatslist chatslist: userlist) {
 
-
                         if (users.getId().equals(chatslist.getId())) {
 
-
                             mUsers.add(users);
-
-
-
-
                         }
-
-
-
-
                     }
-
-
                 }
 
                 mAdapter = new UserAdapter(getContext(), mUsers, true);
                 recyclerView.setAdapter(mAdapter);
-
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
-
-
 
     }
 }

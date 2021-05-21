@@ -147,9 +147,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
             Intent intent = new Intent(context, MessageActivity.class);
             intent.putExtra("friendid", friendid);
             context.startActivity(intent);
-
-
-
         }
     }
 
@@ -165,11 +162,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for (DataSnapshot ds: snapshot.getChildren()) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
 
                     Chats chats = ds.getValue(Chats.class);
 
-                    if (firebaseUser!=null &&  chats!=null) {
+                    if (firebaseUser != null && chats != null) {
 
 
                         if (chats.getSender().equals(friendid) && chats.getReciever().equals(firebaseUser.getUid()) ||
@@ -178,17 +175,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
 
                             thelastmessage = chats.getMessage();
                         }
-
-
-
-
                     }
-
                 }
 
 
                 switch (thelastmessage) {
-
 
                     case "default":
                         last_msg.setText("No message");
@@ -198,10 +189,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
                         last_msg.setText(thelastmessage);
 
                 }
-
-
                 thelastmessage = "default";
-
 
             }
 
@@ -210,15 +198,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
     }
 }
