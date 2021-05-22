@@ -30,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyHolder> {
 
     Context context;
-    List<Users> userlist;
+    public List<Users> userlist;
     boolean isChat;
 
     String friendid;

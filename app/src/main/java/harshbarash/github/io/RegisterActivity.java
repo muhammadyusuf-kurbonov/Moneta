@@ -54,36 +54,30 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        registerbtn.setOnClickListener(v -> {
+
+            email = et_email.getText().toString();
+            password = et_password.getText().toString();
+            username = et_username.getText().toString();
 
 
+            if (TextUtils.isEmpty(email)) {
+                et_email.setError("Введите почту");
+            } else if (TextUtils.isEmpty(username)) {
+                et_username.setError("Введите имя пользователя");
 
-        registerbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            } else if (TextUtils.isEmpty(password)) {
+                et_password.setError("Введите пароль");
 
-                email = et_email.getText().toString();
-                password = et_password.getText().toString();
-                username = et_username.getText().toString();
+            } else if (password.length() < 6) {
 
-
-                if (TextUtils.isEmpty(email)) {
-                    et_email.setError("Введите почту");
-                } else if (TextUtils.isEmpty(username)) {
-                    et_username.setError("Введите имя пользователя");
-
-                } else if (TextUtils.isEmpty(password)) {
-                    et_password.setError("Введите пароль");
-
-                } else if (password.length() < 6) {
-
-                    et_password.setError("Минимум 6 символов");
-                } else {
+                et_password.setError("Минимум 6 символов");
+            } else {
 
 
-                    registerUser(username, password, email);
-                }
-
+                registerUser(username, password, email);
             }
+
         });
 
 
@@ -94,51 +88,42 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerUser(final String username, String password, final String email) {
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
 
-                if (task.isSuccessful()) {
+            if (task.isSuccessful()) {
 
-                    FirebaseUser user = mAuth.getCurrentUser();
+                FirebaseUser user = mAuth.getCurrentUser();
 
+                if (user != null) {
                     reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
 
 
-                    if (user!=null) {
-
-                        HashMap<String, Object> hashMap = new HashMap<>();
-                        hashMap.put("username", username);
-                        hashMap.put("email", email);
-                        hashMap.put("id", user.getUid());
-                        hashMap.put("imageURL", "default");
-                        hashMap.put("status", "offline");
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("username", username);
+                    hashMap.put("email", email);
+                    hashMap.put("id", user.getUid());
+                    hashMap.put("imageURL", "default");
+                    hashMap.put("status", "offline");
 
 
-                        reference.setValue(hashMap).addOnCompleteListener(task1 -> {
+                    reference.setValue(hashMap).addOnCompleteListener(task1 -> {
 
 
-                            if (task1.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "Успешный вход", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
-
-
-
-
-
-                    }
-
+                        if (task1.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, "Успешный вход", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
 
                 }
 
-
-
             }
+
+
+
         });
 
     }

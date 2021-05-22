@@ -1,5 +1,6 @@
 package harshbarash.github.io.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,20 +42,17 @@ public class ChatsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_chats, container, false);
 
-
         userlist = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.chat_recyclerview_chatfrag);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new UserAdapter(getContext(), new ArrayList<>(), true);
         recyclerView.setAdapter(mAdapter);
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         DatabaseReference reference  = FirebaseDatabase.getInstance().getReference("Chatslist")
                 .child(firebaseUser.getUid());
-
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,11 +61,10 @@ public class ChatsFragment extends Fragment {
                 userlist.clear();
                 for (DataSnapshot ds: snapshot.getChildren()) {
                     Chatslist chatslist = ds.getValue(Chatslist.class);
-
                     userlist.add(chatslist);
                 }
 
-                ChatsListings();
+                listChats();
             }
 
             @Override
@@ -77,34 +74,32 @@ public class ChatsFragment extends Fragment {
         return view;
     }
 
-    private void ChatsListings() {
+    // recommended lowerCase for fields and methods
+    // UpperCase is for classes and enums
+    private void listChats() {
 
         mUsers = new ArrayList<>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-
         databaseReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 mUsers.clear();
 
                 for (DataSnapshot ds: snapshot.getChildren()) {
-
                     Users users = ds.getValue(Users.class);
-
                     for (Chatslist chatslist: userlist) {
-
-                        if (users.getId().equals(chatslist.getId())) {
-
+                        if (users != null && users.getId().equals(chatslist.getId())) {
                             mUsers.add(users);
                         }
                     }
                 }
 
-                mAdapter = new UserAdapter(getContext(), mUsers, true);
-                recyclerView.setAdapter(mAdapter);
+                mAdapter.userlist = mUsers;
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
